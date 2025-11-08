@@ -1,0 +1,2289 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHITE COAT WARRIORS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* All CSS styles remain the same as in the original file */
+        :root {
+            --primary-blue: #1a56db;
+            --secondary-blue: #0ea5e9;
+            --dark-blue: #1e3a8a;
+            --light-blue: #dbeafe;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-teal: #14b8a6;
+            --accent-yellow: #fbbf24;
+            --accent-amber: #f59e0b;
+            --vibrant-blue: #3b82f6;
+            --vibrant-green: #22c55e;
+            --vibrant-purple: #a855f7;
+            --vibrant-pink: #e879f9;
+            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            --gradient-green: linear-gradient(135deg, var(--accent-green), #34d399);
+            --gradient-orange: linear-gradient(135deg, var(--accent-orange), #f97316);
+            --gradient-red: linear-gradient(135deg, var(--accent-red), #f87171);
+            --gradient-purple: linear-gradient(135deg, var(--accent-purple), #a78bfa);
+            --gradient-pink: linear-gradient(135deg, var(--accent-pink), #f472b6);
+            --gradient-teal: linear-gradient(135deg, var(--accent-teal), #2dd4bf);
+            --gradient-yellow: linear-gradient(135deg, var(--accent-yellow), #f59e0b);
+            --gradient-vibrant: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 2px 5px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 5px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6px;
+            color: #1e3a8a;
+            font-size: 8.25px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 9px;
+        }
+
+        .logo h1 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5px;
+            background: var(--gradient-vibrant);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo p {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.525rem;
+        }
+
+        .page {
+            background: white;
+            border-radius: 9px;
+            padding: 9px;
+            box-shadow: var(--shadow-xl);
+            width: 100%;
+            display: none;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(10px);
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .promo-banner {
+            background: var(--gradient-vibrant);
+            color: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            margin-bottom: 11.25px;
+            text-align: center;
+            font-size: 0.45rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        .promo-banner h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-banner p {
+            line-height: 1.4;
+            text-align: justify;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 6px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 1.5px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 0.525rem;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 4.5px 6.75px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            font-size: 0.525rem;
+            background: #f8fafc;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26, 86, 219, 0.15);
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .password-container .form-input {
+            padding-right: 22.5px;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 7.5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-blue);
+            font-size: 0.525rem;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4.5px 7.5px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            gap: 3px;
+            width: 100%;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(26, 86, 219, 0.2);
+        }
+
+        .btn-contact {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-purple {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn-red {
+            background: var(--gradient-red);
+            color: white;
+        }
+
+        .btn-red:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-orange {
+            background: var(--gradient-orange);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+        }
+
+        .error-box {
+            background: #fee2e2;
+            color: var(--accent-red);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-red);
+        }
+
+        .success-box {
+            background: #d1fae5;
+            color: var(--accent-green);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-green);
+        }
+
+        .notification-box {
+            background: #fef3c7;
+            color: #d97706;
+            padding: 7.5px;
+            border-radius: 4.5px;
+            margin-top: 7.5px;
+            font-weight: 600;
+            font-size: 0.525rem;
+            text-align: center;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .quiz-notification {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            box-shadow: var(--shadow-xl);
+            z-index: 1000;
+            display: none;
+            max-width: 225px;
+            border-left: 3.75px solid var(--accent-green);
+            animation: slideInRight 0.3s ease;
+            transform: translateX(100%);
+        }
+
+        .quiz-notification.show {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .quiz-notification.warning {
+            border-left-color: var(--accent-orange);
+        }
+
+        .quiz-notification.error {
+            border-left-color: var(--accent-red);
+        }
+
+        .quiz-notification-content {
+            display: flex;
+            flex-direction: column;
+            gap: 7.5px;
+        }
+
+        .quiz-notification-title {
+            font-weight: 700;
+            font-size: 0.6rem;
+            color: var(--dark-blue);
+        }
+
+        .quiz-notification-message {
+            font-size: 0.525rem;
+            color: #4b5563;
+        }
+
+        .quiz-notification-actions {
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+
+        .quiz-notification-btn {
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.4875rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .quiz-notification-btn.primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .quiz-notification-btn.secondary {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .main-page-buttons {
+            display: grid;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-access-section {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            padding-bottom: 4.5px;
+            border-bottom: 1.5px solid var(--light-blue);
+        }
+
+        .quiz-title-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.25px;
+            width: 80%;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.525rem;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        .timer-container {
+            display: flex;
+            gap: 4.5px;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .timer, .question-timer {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 2.25px 4.5px;
+            border-radius: 7.5px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            box-shadow: var(--shadow);
+            white-space: nowrap;
+        }
+
+        .timer.total-timer {
+            background: var(--gradient-orange);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 4.5px;
+            background: #e5e7eb;
+            border-radius: 2.25px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 2.25px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        .question-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(10.5px, 1fr));
+            gap: 2.25px;
+            margin-bottom: 6px;
+        }
+
+        .question-nav-item {
+            width: 10.5px;
+            height: 10.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2.25px;
+            font-weight: 700;
+            font-size: 0.375rem;
+            cursor: pointer;
+            background: white;
+            border: 1.5px solid var(--light-blue);
+            transition: all 0.2s;
+        }
+
+        .question-nav-item.current {
+            background: var(--gradient-vibrant);
+            color: white;
+            border-color: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        .question-nav-item.solved {
+            background: var(--gradient-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+
+        .question-nav-item.visited {
+            background: var(--gradient-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+
+        .question-container {
+            margin-bottom: 6px;
+        }
+
+        .question-text {
+            font-size: 0.5625rem;
+            font-weight: 700;
+            margin-bottom: 4.5px;
+            color: var(--dark-blue);
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3px;
+            margin-bottom: 6px;
+        }
+
+        .option {
+            padding: 3.75px 6px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            background: #f8fafc;
+            font-size: 0.525rem;
+            position: relative;
+        }
+
+        .option:hover {
+            border-color: var(--primary-blue);
+            background: #e0f2fe;
+            transform: translateY(-1px);
+        }
+
+        .option.selected {
+            border-color: var(--primary-blue);
+            background: #dbeafe;
+        }
+
+        .option.correct {
+            border-color: var(--accent-green);
+            background: #d1fae5;
+        }
+
+        .option.incorrect {
+            border-color: var(--accent-red);
+            background: #fee2e2;
+        }
+
+        .option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .reasoning {
+            background: #f8fafc;
+            border-radius: 3.75px;
+            padding: 6px;
+            margin-top: 6px;
+            display: none;
+            border-left: 2.25px solid var(--primary-blue);
+            font-size: 0.525rem;
+        }
+
+        .reasoning-title {
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: var(--dark-blue);
+            font-size: 0.5625rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 9px;
+        }
+
+        .nav-btn {
+            padding: 3.75px 5.25px;
+            border-radius: 3.75px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-size: 0.525rem;
+            display: flex;
+            align-items: center;
+            gap: 2.25px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            color: white;
+        }
+
+        .btn-reasoning {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-reasoning.disabled {
+            background: #dc3545;
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .btn-reasoning.disabled:hover {
+            background: #dc3545;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-submit {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .results-header-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3.75px;
+            margin-bottom: 9px;
+        }
+
+        .results-header-buttons .btn {
+            padding: 3px 4.5px;
+            font-size: 0.4875rem;
+            width: 100%;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+            border-radius: 6px;
+            padding: 9px;
+            text-align: center;
+            margin-bottom: 9px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-vibrant);
+        }
+
+        .result-card h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: var(--dark-blue);
+        }
+
+        .result-card table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.525rem;
+            margin-top: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .result-card th, .result-card td {
+            padding: 3.75px;
+            border: 1px solid #dbeafe;
+            text-align: left;
+        }
+
+        .result-card th {
+            background-color: var(--light-blue);
+            font-weight: 600;
+        }
+
+        .result-card td {
+            background-color: #f8fafc;
+        }
+
+        .result-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 4.5px;
+            margin-top: 9px;
+        }
+
+        .all-mcqs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11.25px;
+        }
+
+        .all-mcq-item {
+            padding: 7.5px;
+            border: 1px solid var(--light-blue);
+            border-radius: 6px;
+            background: #f8fafc;
+            position: relative;
+        }
+
+        .all-mcq-item .question-text {
+            color: var(--dark-blue);
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+
+        .all-mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 4.5px;
+        }
+
+        .all-mcq-option {
+            font-size: 0.525rem;
+            padding: 3px 4.5px;
+            border-radius: 3px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .all-mcq-option.correct {
+            background: #d1fae5;
+            color: var(--accent-green);
+            font-weight: 600;
+            border-color: #a7f3d0;
+        }
+
+        .all-mcq-reasoning {
+            margin-top: 6px;
+            font-size: 0.525rem;
+            color: #4b5563;
+            padding: 6px;
+            background: #f8fafc;
+            border-radius: 3px;
+            border-left: 2.25px solid var(--primary-blue);
+        }
+
+        .all-mcq-reasoning strong {
+            color: var(--dark-blue);
+        }
+
+        .quick-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 9px;
+            gap: 6px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: white;
+            border-radius: 4.5px;
+            padding: 6px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 2px solid var(--primary-blue);
+        }
+
+        .stat-card.correct {
+            border-top-color: var(--accent-green);
+        }
+
+        .stat-card.incorrect {
+            border-top-color: var(--accent-red);
+        }
+
+        .stat-card.unanswered {
+            border-top-color: var(--accent-orange);
+        }
+
+        .stat-value {
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 1.5px;
+        }
+
+        .stat-label {
+            font-size: 0.4875rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .performance-meter {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 6px 0;
+        }
+
+        .performance-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        @media (max-width: 768px) {
+            .quiz-header {
+                flex-direction: column;
+                gap: 4.5px;
+                align-items: flex-start;
+            }
+            
+            .navigation-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-container {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-top: 3.75px;
+                justify-content: flex-end;
+                width: 100%;
+            }
+            
+            .quiz-title-container {
+                width: 100%;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+            }
+            
+            .promo-banner {
+                padding: 9px;
+            }
+            
+            .promo-banner h2 {
+                font-size: 0.6rem;
+            }
+            
+            .promo-banner p {
+                font-size: 0.4125rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-notification" id="quiz-notification">
+        <div class="quiz-notification-content">
+            <div class="quiz-notification-title" id="notification-title">Quiz Progress Found</div>
+            <div class="quiz-notification-message" id="notification-message">You have an unfinished quiz. Do you want to continue where you left off?</div>
+            <div class="quiz-notification-actions">
+                <button class="quiz-notification-btn secondary" id="notification-no">Start Fresh</button>
+                <button class="quiz-notification-btn primary" id="notification-yes">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <h1>WHITE COAT WARRIORS</h1>
+            <p>Excellence in Educational Assessment</p>
+        </div>
+
+        <div id="signin-page" class="page active">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-lock"></i> Access Test</h2>
+            <p>Sign in or use your access code</p>
+            
+            <div class="main-page-buttons">
+                <button class="btn btn-primary" onclick="showQuizAccessForm()">
+                    <i class="fas fa-key"></i>
+                    <span>Sign In with Quiz Access Code</span>
+                </button>
+                <button class="btn btn-primary" onclick="showRegistrationPage()">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Sign Up to Get Quiz Access</span>
+                </button>
+                <button class="btn btn-purple" onclick="showDeveloperAccessForm()">
+                    <i class="fas fa-code"></i>
+                    <span>Developer Access</span>
+                </button>
+            </div>
+            
+            <div id="developer-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-user-secret"></i> Developer Login</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="developerPassword" class="form-input" placeholder="Enter the Developer Password">
+                    <i class="fas fa-eye-slash input-icon" id="toggleDeveloperPassword"></i>
+                </div>
+                <button class="btn btn-purple" onclick="checkDeveloperPassword()">
+                    <span>Log In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="dev-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid developer password.
+                </div>
+            </div>
+            
+            <div id="quiz-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-key"></i> Enter Quiz Access Code</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="quizAccessCode" class="form-input" placeholder="Enter your 12-Digit Quiz Access Code here">
+                    <i class="fas fa-eye-slash input-icon" id="toggleQuizAccessCode"></i>
+                </div>
+                <button class="btn btn-primary" onclick="accessQuiz(document.getElementById('quizAccessCode').value)">
+                    <span>Access Quiz</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="quiz-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid quiz access code.
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="registration-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-user-edit"></i> Student Registration</h2>
+            <p>Please provide your details to register</p>
+            
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user"></i> Student Name</label>
+                <input type="text" id="studentName" class="form-input" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user-friends"></i> Father Name</label>
+                <input type="text" id="fatherName" class="form-input" placeholder="Enter your father's name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-phone"></i> Mobile Number (WhatsApp)</label>
+                <input type="tel" id="mobile" class="form-input" placeholder="+92XXXXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-city"></i> City / District</label>
+                <input type="text" id="city" class="form-input" placeholder="Enter your city/district">
+            </div>
+            <button class="btn btn-primary" onclick="handleRegistration()">
+                <span>Submit to Get Access to Quiz</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-red" style="margin-top: 3.75px;" onclick="showPage('signin-page')">
+                <i class="fas fa-chevron-left"></i> Back to Home
+            </button>
+        </div>
+
+        <div id="quiz-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+
+            <div class="quiz-header">
+                <div class="quiz-title-container">
+                    <h2 id="quiz-title"></h2>
+                    <div class="quiz-info">
+                        <span><i class="fas fa-book"></i> Subject: <span id="quiz-subject">English Grammar</span></span>
+                        <span><i class="fas fa-clock"></i> Per MCQ: <span id="per-mcq-time">1</span> Minute</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timer-container">
+                <div class="timer" id="question-timer">60</div>
+                <div class="timer total-timer" id="timer">40:00</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="quiz-progress"></div>
+            </div>
+
+            <div class="question-nav" id="question-nav"></div>
+            
+            <div class="question-container">
+                <div class="question-text" id="question-text"></div>
+                <div class="options-container" id="options-container"></div>
+                <div class="reasoning" id="reasoning">
+                    <div class="reasoning-title"><i class="fas fa-lightbulb"></i> Explanation:</div>
+                    <div id="reasoning-text"></div>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="nav-btn btn-back" onclick="navigateQuestion('prev')">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="nav-btn btn-next" onclick="navigateQuestion('next')">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="nav-btn btn-reasoning disabled" id="reasoning-btn" onclick="toggleReasoning()">
+                    <i class="fas fa-lightbulb"></i> Reasoning
+                </button>
+                <button class="nav-btn btn-submit" onclick="submitTest()">
+                    Submit <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="results-page" class="page">
+            <div class="results-header-buttons">
+                <a id="website-link" href="#" target="_blank" class="btn btn-primary"><i class="fas fa-globe"></i> Website</a>
+                <a id="whatsapp-contact-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp Contact</a>
+                <a id="whatsapp-community-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fas fa-users"></i> Whatsapp Community</a>
+            </div>
+            
+            <div class="quick-stats">
+                <div class="stat-card correct">
+                    <div class="stat-value" id="correct-count">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-card incorrect">
+                    <div class="stat-value" id="incorrect-count">0</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-card unanswered">
+                    <div class="stat-value" id="unanswered-count">0</div>
+                    <div class="stat-label">Unanswered</div>
+                </div>
+            </div>
+            
+            <div class="performance-meter">
+                <div class="performance-fill" id="performance-fill"></div>
+            </div>
+            
+            <div class="result-card">
+                <h2><i class="fas fa-user-graduate"></i> Student Information</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-info-table"></tbody>
+                </table>
+            </div>
+
+            <div class="result-card">
+                <h2><i class="fas fa-chart-bar"></i> Test Results</h2>
+                <table>
+                    <tbody id="quiz-results-table"></tbody>
+                </table>
+            </div>
+            
+            <div class="result-actions">
+                <button class="btn btn-primary" onclick="restartTest()">
+                    <i class="fas fa-redo"></i> Retake Full Test
+                </button>
+                <button class="btn btn-primary" onclick="retakeIncorrect()">
+                    <i class="fas fa-bolt"></i> Retake Incorrect Questions
+                </button>
+                <button class="btn btn-primary" onclick="viewAllMcqs()">
+                    <i class="fas fa-clipboard-list"></i> View All MCQs
+                </button>
+            </div>
+        </div>
+
+        <div id="all-mcqs-page" class="page">
+            <h2><i class="fas fa-list-alt"></i> All MCQs and Solutions</h2>
+            <div class="all-mcqs-list" id="all-mcqs-list"></div>
+            <button class="btn btn-primary" onclick="showPage('results-page')">
+                <i class="fas fa-arrow-left"></i> Back to Results
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html><script>// ***************************************************************
+// !! IMPORTANT: GOOGLE APPS SCRIPT URL FOR DATA LOGGING !!
+const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw2N316gzPWvSV7_59Mjx49idXLH8Sc7S_S0nHhvGjYxhhGjTm8UBnsRB4VGgeuluL0/exec';
+// ***************************************************************
+
+// Quiz Data
+const quizData_WCW_PHY_01 = [
+    {
+        question: "Q1: In the study of electrostatics, the fundamental condition under which electric charges are investigated is their state of motion. What characteristic defines this state?",
+        options: [
+            "Continuous acceleration",
+            "Constant velocity",
+            "Perpetual oscillation",
+            "Complete rest"
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory State that: Electrostatics is defined as the study of electric charges at rest or in a static condition. Therefore, the characteristic defining the state of charges in electrostatics is complete rest."
+    },
+    {
+        question: "Q2: When considering the interaction between two static charged particles, the nature of the resulting force depends critically on their charge types. What fundamental behavior describes the force between charges of opposite types?",
+        options: [
+            "Mutual repulsion",
+            "Mutual attraction",
+            "No interaction",
+            "Oscillatory movement"
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that: The electric force between static charged particles can be attractive (between opposite charges) or repulsive (between similar charges). Therefore, opposite charges exhibit mutual attraction."
+    },
+    {
+        question: "Q3: Electric charge is described as quantized. This implies that the total charge of any object is always a specific type of multiple of a fundamental unit. What kind of multiple is always observed for electric charge?",
+        options: [
+            "Fractional division",
+            "Decimal representation",
+            "Integral quantity",
+            "Exponential factor"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: Electric charge (q) is quantized, meaning it exists as an integral multiple (n) of the elementary charge (e). Thus, it is always an integral quantity."
+    },
+    {
+        question: "Q4: The principle of charge conservation states that electric charge cannot be destroyed or created independently. Under what specific condition can charge be produced or annihilated?",
+        options: [
+            "In isolation without external influence",
+            "Through spontaneous decay of a single charge",
+            "In conjunction with the disappearance or appearance of another charge of opposite sign",
+            "Through electromagnetic radiation alone"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: Charge cannot be destroyed or created independently but can be produced or annihilated in pairs (e.g., pair production/annihilation). This means it must occur in conjunction with its opposite."
+    },
+    {
+        question: "Q5: For a positive test charge placed within an electric field, the electric force experienced by the charge aligns with a specific change in electric potential. How does the force direction relate to the potential change for such a charge?",
+        options: [
+            "Along the direction of increasing potential",
+            "Perpendicular to the direction of potential change",
+            "Along the direction of decreasing potential",
+            "Independent of potential variation"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: Electric force is along the direction of decreasing potential for a positive test charge. Thus, it aligns with decreasing potential."
+    },
+    {
+        question: "Q6: Coulomb's Law, describing electrostatic force, was first quantitatively measured using a specific scientific instrument. What device did Charles-Augustin de Coulomb employ for this measurement?",
+        options: [
+            "A Leyden jar",
+            "A Van de Graaff generator",
+            "A torsion balance",
+            "An electrometer"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: Coulomb's Law was first quantitatively measured by Charles-Augustin de Coulomb using a torsion balance."
+    },
+    {
+        question: "Q7: Coulomb's Law states that the magnitude of electrostatic force between two point charges is directly proportional to the product of their magnitudes. How does this force depend on the separation distance between these charges?",
+        options: [
+            "Directly proportional to the distance",
+            "Inversely proportional to the distance",
+            "Directly proportional to the square of the distance",
+            "Inversely proportional to the square of the distance"
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory State that: The magnitude of the electrostatic force (F) between two point charges (q₁ and q₂) is inversely proportional to the square of the distance (r) between them."
+    },
+    {
+        question: "Q8: Coulomb's Law is specifically applicable under certain conditions regarding the physical dimensions of the interacting charges. What assumption is made about the size of these charges relative to their separation?",
+        options: [
+            "Their size is significantly larger than the separation distance",
+            "Their size is comparable to the separation distance",
+            "Their size is negligibly small compared to the separation distance",
+            "Their size is irrelevant to the law's applicability"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: Coulomb's Law applies to charges assumed to be point-like (size is very small compared to the distance between them). Therefore, their size is negligibly small compared to the separation distance."
+    },
+    {
+        question: "Q9: The constant of proportionality in Coulomb's Law depends on two primary factors. One is the system of units used for measurement. What is the other crucial factor influencing its value?",
+        options: [
+            "The temperature of the environment",
+            "The material composing the charges",
+            "The medium separating the charges",
+            "The absolute humidity"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: The constant of proportionality (k) in Coulomb's Law depends on the system of units and the medium between charges."
+    },
+    {
+        question: "Q10: Coulomb's law, when examined from a perspective of interacting forces, is consistent with a fundamental principle of mechanics. Which of Newton's laws does Coulomb's law adhere to?",
+        options: [
+            "Newton's First Law of Motion",
+            "Newton's Law of Universal Gravitation",
+            "Newton's Third Law of Motion",
+            "Newton's Law of Inertia"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: Coulomb's law adheres to Newton's third law, meaning the forces are equal in magnitude and opposite in direction."
+    },
+    {
+        question: "Q11: In SI units, electric charge is quantified using a specific unit. What is the standard SI unit for measuring electric charge?",
+        options: [
+            "Joules",
+            "Volts",
+            "Watts",
+            "Coulombs"
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory State that: Charge is measured in Coulombs (C) in SI units."
+    },
+    {
+        question: "Q12: To quantitatively determine the amount of electric charge present in a system, a specialized instrument is typically employed. What device is used for the measurement of charge?",
+        options: [
+            "A barometer",
+            "A thermometer",
+            "An electrometer",
+            "A spectrometer"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: An electrometre is used to measure charge."
+    },
+    {
+        question: "Q13: Comparing the strength of the Coulomb force to another fundamental force, gravity, reveals a vast difference in their magnitudes. How does the strength of the Coulomb force generally compare to the gravitational force?",
+        options: [
+            "It is significantly weaker",
+            "It is of comparable strength",
+            "It is significantly stronger",
+            "Its strength is inversely related"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: Coulomb force is significantly stronger than gravitational force (approx. 10³⁹ times)."
+    },
+    {
+        question: "Q14: Permittivity of free space is a fundamental physical constant. What physical property does it represent concerning a vacuum?",
+        options: [
+            "Absolute magnetic permeability",
+            "Absolute dielectric permittivity",
+            "Thermal conductivity",
+            "Optical refractivity"
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that: Permittivity of Free Space (ε₀) is a fundamental physical constant representing the absolute dielectric permittivity of a vacuum."
+    },
+    {
+        question: "Q15: When an insulating (dielectric) medium is introduced between two charges, how does this typically affect the magnitude of the electrostatic force experienced between them?",
+        options: [
+            "It significantly increases the force",
+            "It has no discernible effect on the force",
+            "It reduces the force",
+            "It oscillates the force"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: Placing an insulator (dielectric medium) between charges reduces the force."
+    },
+    {
+        question: "Q16: Relative permittivity, also known as the dielectric constant, is defined as a ratio involving the permittivity of a material medium and the permittivity of free space. What is a key characteristic of relative permittivity concerning its units?",
+        options: [
+            "It is measured in Coulombs per meter",
+            "It is a dimensionless quantity",
+            "It has units of Newton-meters squared per Coulomb squared",
+            "It is expressed in Volts per meter"
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that: Relative Permittivity (εr) / Dielectric Constant is dimensionless. Its value is always greater than unity for dielectrics."
+    },
+    {
+        question: "Q17: The concept of an electric field was introduced by a specific scientist in the 19th century. Who is credited with the introduction of this concept?",
+        options: [
+            "André-Marie Ampère",
+            "James Clerk Maxwell",
+            "Michael Faraday",
+            "Heinrich Hertz"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: The concept of electric field was introduced by Michael Faraday in the 19th century."
+    },
+    {
+        question: "Q18: An electric field is characterized by two fundamental aspects at every point in space. One is its strength. What is the other essential characteristic that describes an electric field?",
+        options: [
+            "Its temporal frequency",
+            "Its mass density",
+            "Its direction",
+            "Its thermal energy"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: An electric field is characterized by its strength and direction at every point in space."
+    },
+    {
+        question: "Q19: A test charge is defined as a small, positive charge used to determine the electric field. What crucial assumption is made about its size to ensure it accurately probes the primary field?",
+        options: [
+            "It must be large enough to induce a secondary field",
+            "It must be small enough not to distort the primary field",
+            "Its size must be precisely equal to the source charge's size",
+            "Its size is irrelevant as long as it is positive"
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that: A test charge (q₀) is assumed to be small enough not to distort the primary field. The direction of E is the direction q₀ moves or tends to move."
+    },
+    {
+        question: "Q20: Electric field intensity is described as a specific physical quantity per unit positive test charge. What is this physical quantity?",
+        options: [
+            "Potential energy",
+            "Work done",
+            "Force",
+            "Momentum"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: Electric Field Intensity (E) is the force per unit positive test charge."
+    },
+    {
+        question: "Q21: Electric field intensity, a vector quantity, has a standard SI unit. What is this unit, relating force and charge?",
+        options: [
+            "Joules per Coulomb",
+            "Volts per second",
+            "Newtons per Coulomb",
+            "Watts per meter"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: The SI Unit for Electric Field Intensity is Newton per Coulomb (NC⁻¹) or Volt per meter (Vm⁻¹)."
+    },
+    {
+        question: "Q22: An electric field is classified as a conservative field. What is the direct consequence of this property regarding the work done on a charge within such a field?",
+        options: [
+            "Work done in a closed loop is always positive",
+            "Work done in a closed loop is always zero",
+            "Work done depends on the path taken in a closed loop",
+            "Work done causes continuous acceleration in a closed loop"
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that: Electric field is a conservative field, meaning the work done in moving a charge in a closed loop is zero."
+    },
+    {
+        question: "Q23: Electric field lines are a pictorial representation of an electric field. What do the arrows on these lines specifically indicate?",
+        options: [
+            "The path a negative test charge would take",
+            "The path a neutral particle would follow",
+            "The direction a positive test charge would accelerate",
+            "The magnitude of the field strength"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: Arrows on electric field lines indicate the direction a positive test charge would accelerate."
+    },
+    {
+        question: "Q24: The density of electric field lines in a particular region visually conveys a specific characteristic of the electric field. What does a higher density of field lines signify about the field?",
+        options: [
+            "A weaker field",
+            "A non-uniform field",
+            "A stronger field",
+            "A field with zero potential"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: Density of lines indicates field strength (closer lines = stronger field). Therefore, a higher density signifies a stronger field."
+    },
+    {
+        question: "Q25: A fundamental property of electric field lines is that they never intersect. What would be the physical implication if two field lines were to cross each other at a single point?",
+        options: [
+            "The field strength would be maximized at that point",
+            "The electric potential would be zero at that point",
+            "The electric field would have two distinct directions at the same point, which is physically impossible",
+            "A positive test charge would remain stationary at that point"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: Field lines never cross each other. If they did, it would imply two different directions for the electric field at the same point, which is not physically possible for a unique vector field."
+    },
+    {
+        question: "Q26: A uniform electric field is characterized by parallel and equidistant field lines. This configuration is typically achieved between two specific types of charged objects. What are these objects?",
+        options: [
+            "Two oppositely charged spheres",
+            "A single point charge and a grounded plate",
+            "Two infinitely large, oppositely charged parallel plates",
+            "A charged rod and a charged ring"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: A uniform electric field is achieved between two infinitely large, oppositely charged parallel plates, where field lines are parallel and equidistant."
+    },
+    {
+        question: "Q27: Within the bulk of a conductor in electrostatic equilibrium, a specific condition holds true for the electric field. What is the electric field magnitude inside a conductor?",
+        options: [
+            "It varies inversely with distance from the surface",
+            "It is always zero",
+            "It is uniform and non-zero",
+            "It is equal to the surface charge density"
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that: The electric field is zero inside a conductor. Electric field lines cannot pass through a conductor."
+    },
+    {
+        question: "Q28: For an infinite plane sheet of charge, the electric field exhibits particular characteristics. How does its magnitude depend on the distance from the sheet?",
+        options: [
+            "It decreases with the square of the distance",
+            "It increases proportionally with the distance",
+            "It is independent of the distance from the sheet",
+            "It oscillates with distance"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: The electric field (E) due to an infinite sheet of charge is uniform, perpendicular to the sheet, and independent of the distance from the sheet."
+    },
+    {
+        question: "Q29: Between two oppositely charged parallel metal plates, the electric field exhibits specific properties. What is a key characteristic of this field regarding its orientation to the plates?",
+        options: [
+            "It is parallel to the plates",
+            "It is at a 45-degree angle to the plates",
+            "It is perpendicular to the plates",
+            "Its direction varies randomly"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: The electric field (E) between two oppositely charged parallel metal plates is uniform and perpendicular to the plates."
+    },
+    {
+        question: "Q30: A metal shell provides an internal region with zero electric field, offering protection during external electrical phenomena like thunderstorms. What is the common name for this protective effect?",
+        options: [
+            "The Lenz effect",
+            "The Hall effect",
+            "The Faraday cage effect",
+            "The Photoelectric effect"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: A metal shell provides a region with zero electric field inside, offering protection during phenomena like thunderstorms (Faraday cage effect)."
+    },
+    {
+        question: "Q31: Electric potential, a scalar quantity, is defined as the work done per unit positive charge. From what reference point is this work typically measured, where the potential is considered zero?",
+        options: [
+            "The surface of the charged object",
+            "A point within the conductor",
+            "A point infinitely far away",
+            "The center of the electric field"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: Electric Potential (V) is the work done per unit positive charge (W_BA / q₀) in moving it from a reference point (usually infinity, where V=0) to a specific point."
+    },
+    {
+        question: "Q32: The SI unit for electric potential is the Volt. How is one Volt defined in terms of work and charge?",
+        options: [
+            "One Joule of work done per one Ampere of current",
+            "One Watt of power per one Coulomb of charge",
+            "One Joule of work done in moving one Coulomb of charge",
+            "One Newton of force per one meter of displacement"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: 1 Volt is defined as the potential difference between two points if one Joule of work is done in moving one Coulomb of charge from one point to the other (1 V = 1 J/C)."
+    },
+    {
+        question: "Q33: Electric potential energy is the energy stored in a charge due to its position within an electric field. How does the change in potential energy relate to the electric potential difference and the charge moved?",
+        options: [
+            "It is inversely proportional to the potential difference",
+            "It is directly proportional to the product of charge and potential difference",
+            "It is proportional to the square of the charge",
+            "It is independent of the potential difference"
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that: The relation between potential energy and potential is ΔU = q₀ΔV. This shows direct proportionality to the product of charge and potential difference."
+    },
+    {
+        question: "Q34: The electric field and electric potential are fundamentally related by a concept known as the potential gradient. The relationship reveals a specific orientation between the field and the direction of potential change. How does the electric field point relative to the direction of potential increase?",
+        options: [
+            "In the same direction as increasing potential",
+            "Perpendicular to the direction of increasing potential",
+            "In the direction opposite to increasing potential",
+            "Along the path of highest potential"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: The relationship E = - ΔV/Δr implies that the electric field (E) points in the direction of *decreasing* potential, meaning it is opposite to the direction in which the potential is increasing."
+    },
+    {
+        question: "Q35: The electron-Volt (eV) is a common unit of energy. How is it fundamentally defined in terms of an electron and an electric potential?",
+        options: [
+            "The force exerted on an electron by one Volt",
+            "The power dissipated by an electron in one Volt",
+            "The charge of an electron multiplied by one Volt",
+            "The energy acquired or lost by an electron when displaced across a potential difference of one Volt"
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory State that: An electron-Volt (eV) is the energy acquired or lost by an electron when it is displaced across a potential difference of one Volt."
+    },
+    {
+        question: "Q36: A capacitor's primary function in an electrical circuit is to perform a specific action related to charge. What is the main function of a capacitor?",
+        options: [
+            "To generate electric current",
+            "To convert electrical energy into heat",
+            "To store electric charge",
+            "To amplify voltage signals"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: A capacitor's function is to store electric charge."
+    },
+    {
+        question: "Q37: In an RC circuit during charging, as the capacitor accumulates charge on its plates, what observable change occurs in the current flowing through the circuit?",
+        options: [
+            "The current steadily increases",
+            "The current remains constant",
+            "The current decreases",
+            "The current reverses direction"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: During charging, as the capacitor begins to store charge, the current decreases as the charge builds up on the plates."
+    },
+    {
+        question: "Q38: The time constant (RC) of an RC circuit is a crucial parameter during charging. What percentage of its maximum possible charge does a capacitor reach after exactly one time constant?",
+        options: [
+            "Approximately 10%",
+            "Exactly 50%",
+            "Approximately 63.2%",
+            "Nearly 100%"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: The time constant (RC) is the time taken for the capacitor to charge to 63.2% of its maximum possible charge (q₀)."
+    },
+    {
+        question: "Q39: Theoretically, a capacitor connected to a voltage source never truly reaches its maximum possible charge. However, for practical purposes, it is considered fully charged after a certain number of time constants. How many time constants typically signify a practically 'fully charged' capacitor?",
+        options: [
+            "One time constant",
+            "Two time constants",
+            "Five time constants",
+            "Ten time constants"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: Practically, a capacitor is considered fully charged after about 5 time constants (99.3%)."
+    },
+    {
+        question: "Q40: During the discharging process of a capacitor in an RC circuit, the time constant (RC) indicates a specific reduction in charge. After one time constant, what percentage of its maximum initial charge remains on the capacitor?",
+        options: [
+            "Approximately 10%",
+            "Approximately 36.8%",
+            "Exactly 50%",
+            "Approximately 86.4%"
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that: During discharging, the time constant (RC) is the time taken for the charge on the capacitor to fall to 36.8% of its maximum value (q₀)."
+    },
+    {
+        question: "Q41: In the context of Coulomb's Law, if the magnitude of one of the point charges is doubled, and the distance between the charges is also doubled, how does the electrostatic force between them change?",
+        options: [
+            "It becomes four times stronger",
+            "It remains unchanged",
+            "It becomes half as strong",
+            "It becomes twice as strong"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: Force is directly proportional to the product of charges and inversely proportional to the square of the distance. If one charge doubles, force doubles. If distance doubles, force becomes one-quarter. So, 2 * (1/4) = 1/2. The force becomes half as strong."
+    },
+    {
+        question: "Q42: Consider an electric field generated by a positive point charge. If a positive test charge is moved further away from this source charge, how do both the electric field intensity and the electric potential at the test charge's location change?",
+        options: [
+            "Both increase",
+            "Field intensity increases, potential decreases",
+            "Both decrease",
+            "Field intensity decreases, potential increases"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: Electric field intensity due to a point charge is inversely proportional to the square of the separation distance. Electric potential due to a point charge is inversely proportional to the separation distance. Both decrease as the distance increases."
+    },
+    {
+        question: "Q43: If the permittivity of the medium between two point charges is increased, while keeping the charges and their separation constant, what will be the resulting effect on the electrostatic force and the electric field intensity experienced by a test charge at a specific point between them?",
+        options: [
+            "Both force and field intensity will increase",
+            "Force will decrease, field intensity will increase",
+            "Both force and field intensity will decrease",
+            "Force will increase, field intensity will decrease"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: Electrostatic force in a medium is inversely proportional to the permittivity of the medium. Electric field intensity is also inversely related to permittivity (E = F/q₀, and F depends on permittivity). Thus, increasing permittivity reduces both force and field intensity."
+    },
+    {
+        question: "Q44: An electric field is conservative. This implies a relationship between the work done moving a charge between two points and the path taken. Which statement correctly describes this relationship in a conservative field?",
+        options: [
+            "The work done depends directly on the length of the path",
+            "The work done is always positive regardless of the path",
+            "The work done is independent of the path taken",
+            "The work done is inversely proportional to the speed of the charge"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: Electric field is a conservative field, meaning the work done in moving a charge in a closed loop is zero. More generally, in a conservative field, the work done in moving a charge between two points is independent of the path taken, depending only on the initial and final positions."
+    },
+    {
+        question: "Q45: Considering a region of electric field lines, if the lines are closely spaced in one area and widely spaced in another, what does this imply about the electric potential gradient and the electric field strength in these two areas?",
+        options: [
+            "Closer lines mean smaller potential gradient and weaker field",
+            "Closer lines mean larger potential gradient and stronger field",
+            "Wider lines mean larger potential gradient and stronger field",
+            "Potential gradient is unrelated to field line spacing"
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that: The density of field lines indicates field strength (closer lines = stronger field). The relationship E = -ΔV/Δr shows that electric field strength is directly related to the potential gradient. Therefore, closer lines indicate a stronger field and thus a larger potential gradient."
+    },
+    {
+        question: "Q46: If an electric potential is uniform across a region, what can be definitively stated about the electric field intensity within that same region?",
+        options: [
+            "The electric field intensity is non-uniform",
+            "The electric field intensity is directed towards higher potential",
+            "The electric field intensity is zero",
+            "The electric field intensity is constant and non-zero"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: The relationship E = - ΔV/Δr implies that if the potential (V) is uniform, its rate of change with respect to displacement (ΔV/Δr) is zero. Therefore, the electric field intensity (E) must be zero."
+    },
+    {
+        question: "Q47: A capacitor is charging in an RC circuit. If the resistance in the circuit is significantly increased while the capacitance remains constant, how will this affect the time taken for the capacitor to reach a substantial fraction of its maximum charge, and the eventual maximum charge it stores?",
+        options: [
+            "Charging time decreases, maximum charge increases",
+            "Charging time increases, maximum charge remains unchanged",
+            "Charging time decreases, maximum charge remains unchanged",
+            "Charging time increases, maximum charge decreases"
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that: The time constant (RC) is the product of resistance and capacitance. Increasing resistance increases the time constant, meaning it takes longer to charge. The maximum charge a capacitor stores depends only on the voltage source and capacitance (Q=CV), not on the resistance in the charging path, so the maximum charge remains unchanged."
+    },
+    {
+        question: "Q48: In a region containing an infinite plane sheet of positive charge, if a negative test charge is introduced, what will be the nature of the force it experiences and how will this force depend on its distance from the sheet?",
+        options: [
+            "Attractive and increasing with distance",
+            "Repulsive and independent of distance",
+            "Attractive and independent of distance",
+            "Repulsive and decreasing with distance"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: The electric field (E) due to an infinite sheet of charge is uniform and independent of the distance from the sheet. For a negative test charge in a field created by a positive sheet, the force will be attractive. Since E is uniform, F = qE will also be uniform, hence independent of distance."
+    },
+    {
+        question: "Q49: An electrometre is used to measure charge, and an electron-Volt is a unit of energy. If an electrometre indicates a certain charge and that charge is then accelerated through a potential difference, resulting in an energy change measured in electron-Volts, how would increasing the potential difference affect the resulting energy change?",
+        options: [
+            "The energy change would decrease proportionally",
+            "The energy change would remain constant",
+            "The energy change would increase proportionally",
+            "The energy change would increase quadratically"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: The electron-Volt is the energy acquired or lost by an electron when it is displaced across a potential difference of one Volt. This implies a direct proportionality between the potential difference and the energy change for a given charge (U = qV). Therefore, increasing the potential difference would proportionally increase the energy change."
+    },
+    {
+        question: "Q50: Electric field lines start from positive charges and terminate on negative charges. If a neutral metallic object is introduced into a region with a uniform electric field, what will be the configuration of the electric field lines inside and outside the conductor?",
+        options: [
+            "Field lines will pass through the conductor, becoming denser inside",
+            "Field lines will bend away from the conductor, becoming parallel to its surface",
+            "Field lines will terminate on the conductor's surface and reappear on the opposite side, with no field inside",
+            "Field lines will be uniformly distributed both inside and outside the conductor"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that: Electric field lines cannot pass through a conductor; the electric field is zero inside a conductor. Field lines start from positive charges and terminate on negative charges. When a neutral conductor is placed in an external field, charges redistribute on its surface to create an internal field that cancels the external field. Thus, lines will terminate perpendicularly on one side and originate perpendicularly from the other, effectively not passing through the conductor, and there will be no field inside."
+    }
+];
+
+// Constants
+const QUIZ_ACCESS_CODE = "PreMium-A-12345";
+const DEV_ACCESS_CODE = "Dev-PDA-001";
+const ACADEMY_NAME = "WHITE COAT WORRIORS ";
+const QUIZ_SUBJECT = "Physics ";
+const WEBSITE_LINK = "https://premiumdoctoracademy.com";
+const WHATSAPP_CONTACT = "03287743851";
+const WHATSAPP_COMMUNITY = "https://whatsapp.com/channel/0029VaFCIU6EquiOlXWcNR1X";
+const TIME_PER_MCQ = 60;
+const MARK_PER_MCQ = 1;
+const NEGATIVE_MARKING = 0;
+
+// Global state variables
+let currentQuizId = 'WCW-PHY-01';
+let quizData = quizData_WCW_PHY_01;
+let currentQuestion = 0;
+let userAnswers = Array(quizData.length).fill(null);
+let timeLeft;
+let questionTimeLeft;
+let totalTimeInterval;
+let questionTimeInterval;
+let studentData = {};
+let studentAccessCode = "";
+
+// DOM elements
+const questionNavEl = document.getElementById('question-nav');
+const questionTextEl = document.getElementById('question-text');
+const optionsContainerEl = document.getElementById('options-container');
+const reasoningEl = document.getElementById('reasoning');
+const reasoningTextEl = document.getElementById('reasoning-text');
+const quizTitleEl = document.getElementById('quiz-title');
+const quizSubjectEl = document.getElementById('quiz-subject');
+const perMcqTimeEl = document.getElementById('per-mcq-time');
+const totalTimerEl = document.getElementById('timer');
+const questionTimerEl = document.getElementById('question-timer');
+const quizProgressEl = document.getElementById('quiz-progress');
+const studentInfoTable = document.getElementById('student-info-table');
+const quizResultsTable = document.getElementById('quiz-results-table');
+const allMcqsList = document.getElementById('all-mcqs-list');
+const devPasswordInput = document.getElementById('developerPassword');
+const devErrorBox = document.getElementById('dev-error-box');
+const quizAccessCodeInput = document.getElementById('quizAccessCode');
+const quizAccessErrorBox = document.getElementById('quiz-error-box');
+const toggleDevPasswordIcon = document.getElementById('toggleDeveloperPassword');
+const toggleQuizCodeIcon = document.getElementById('toggleQuizAccessCode');
+const websiteLinkEl = document.getElementById('website-link');
+const whatsappContactLinkEl = document.getElementById('whatsapp-contact-link');
+const whatsappCommunityLinkEl = document.getElementById('whatsapp-community-link');
+const reasoningBtn = document.getElementById('reasoning-btn');
+const quizNotificationEl = document.getElementById('quiz-notification');
+const notificationTitleEl = document.getElementById('notification-title');
+const notificationMessageEl = document.getElementById('notification-message');
+const notificationYesBtn = document.getElementById('notification-yes');
+const notificationNoBtn = document.getElementById('notification-no');
+const correctCountEl = document.getElementById('correct-count');
+const incorrectCountEl = document.getElementById('incorrect-count');
+const unansweredCountEl = document.getElementById('unanswered-count');
+const performanceFillEl = document.getElementById('performance-fill');
+
+
+/**
+ * @description Sends data to the Google Apps Script endpoint.
+ * @param {object} data - The payload containing type ('registration' or 'quiz_result') and data.
+ */
+function sendDataToSheet(data) {
+    if (!SHEET_SCRIPT_URL || SHEET_SCRIPT_URL.includes('YOUR_DEPLOYED_WEB_APP_URL')) {
+        console.error('SHEET_SCRIPT_URL is not configured. Data not sent to Google Sheet.');
+        return Promise.resolve({ success: false, message: 'Script URL not configured.' });
+    }
+
+    return fetch(SHEET_SCRIPT_URL, {
+        method: 'POST',
+        // 'no-cors' is necessary for Apps Script to accept cross-origin POST requests from a web page
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // Cannot read response body with 'no-cors', assume request was sent successfully
+        return { success: true, message: 'Request sent to Google Script.' };
+    })
+    .catch(error => {
+        console.error('Sheet Data Send Error:', error);
+        return { success: false, message: 'Failed to send request to Google Script.' };
+    });
+}
+
+
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    const storedStudentData = localStorage.getItem('studentData');
+    if (storedStudentData) {
+        studentData = JSON.parse(storedStudentData);
+        document.getElementById('studentName').value = studentData['Student Name'] || '';
+        document.getElementById('fatherName').value = studentData['Father Name'] || '';
+        document.getElementById('email').value = studentData['Email'] || '';
+        document.getElementById('mobile').value = studentData['Mobile'] || '';
+        document.getElementById('city').value = studentData['City'] || '';
+    }
+    const storedCode = localStorage.getItem('studentAccessCode');
+    if (storedCode) {
+        studentAccessCode = storedCode;
+    }
+    
+    showPage('signin-page');
+    
+    if (toggleDevPasswordIcon) toggleDevPasswordIcon.addEventListener('click', () => togglePasswordVisibility('developerPassword', 'toggleDeveloperPassword'));
+    if (toggleQuizCodeIcon) toggleQuizCodeIcon.addEventListener('click', () => togglePasswordVisibility('quizAccessCode', 'toggleQuizAccessCode'));
+});
+
+function showQuizNotification(title, message, type = 'info') {
+    const allowedNotifications = ['Registration Successful', 'Access Granted', 
+                                 'Quiz Completed!', 'Quiz Reset', 'Registration Error', 'Submission Error', 'Registration Warning'];
+    
+    if (!allowedNotifications.includes(title)) {
+        return;
+    }
+    
+    notificationTitleEl.textContent = title;
+    notificationMessageEl.textContent = message;
+    
+    quizNotificationEl.classList.remove('warning', 'error');
+    
+    if (type === 'warning') {
+        quizNotificationEl.classList.add('warning');
+    } else if (type === 'error') {
+        quizNotificationEl.classList.add('error');
+    }
+    
+    quizNotificationEl.classList.add('show');
+    
+    setTimeout(() => {
+        if (quizNotificationEl.classList.contains('show')) {
+            hideQuizNotification();
+        }
+    }, 5000);
+}
+
+function hideQuizNotification() {
+    quizNotificationEl.classList.remove('show');
+}
+
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    document.querySelectorAll('.error-box, .success-box').forEach(el => el.style.display = 'none');
+}
+
+function togglePasswordVisibility(inputID, iconID) {
+    const passwordInput = document.getElementById(inputID);
+    const toggleIcon = document.getElementById(iconID);
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    }
+}
+
+function showQuizAccessForm() {
+    document.getElementById('quiz-access-form').style.display = 'flex';
+    document.getElementById('developer-access-form').style.display = 'none';
+}
+
+function showDeveloperAccessForm() {
+    document.getElementById('developer-access-form').style.display = 'flex';
+    document.getElementById('quiz-access-form').style.display = 'none';
+}
+
+function showRegistrationPage() {
+    showPage('registration-page');
+}
+
+// Registration Handler
+function generateAccessCode(studentName, fatherName) {
+    const studentInitials = studentName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const fatherInitials = fatherName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const uniqueId = Math.random().toString(36).substring(2, 7).toUpperCase();
+
+    return `${ACADEMY_NAME.replace(/\s+/g, '-')}-${studentInitials}${fatherInitials}-${uniqueId}`;
+}
+
+function handleRegistration() {
+    const sName = document.getElementById('studentName').value.trim();
+    const fName = document.getElementById('fatherName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const city = document.getElementById('city').value.trim();
+    
+    if (!sName || !fName || !email || !mobile || !city) {
+        showQuizNotification('Registration Error', 'Please fill in all the registration details.', 'error');
+        return;
+    }
+    
+    // Generate access code
+    const generatedCode = generateAccessCode(sName, fName);
+    studentAccessCode = generatedCode;
+
+    studentData = {
+        'Student Name': sName,
+        'Father Name': fName,
+        'Email': email,
+        'Mobile': mobile,
+        'City': city
+    };
+
+    // --- NEW: SEND REGISTRATION DATA TO GOOGLE SHEET ---
+    const registrationDataToSend = {
+        type: 'registration',
+        accessCode: generatedCode,
+        studentName: sName,
+        fatherName: fName,
+        email: email,
+        mobile: mobile,
+        city: city
+    };
+    
+    sendDataToSheet(registrationDataToSend)
+        .then(response => {
+            console.log('Sheet Registration Response:', response);
+            showQuizNotification('Registration Successful', `Your code: ${generatedCode}. Data submitted to sheet.`, 'info');
+        })
+        .catch(error => {
+            console.error('Sheet Registration Error:', error);
+            showQuizNotification('Registration Warning', `Registration saved locally, but sheet submission failed.`, 'warning');
+        });
+    // ----------------------------------------------------
+    
+    // Store data locally
+    localStorage.setItem('studentAccessCode', generatedCode);
+    localStorage.setItem('studentData', JSON.stringify(studentData));
+    
+    const registrations = JSON.parse(localStorage.getItem('wcwRegistrations') || '[]');
+    registrations.push({
+        ...studentData,
+        accessCode: generatedCode,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwRegistrations', JSON.stringify(registrations));
+    
+    
+    // Start the quiz after registration
+    startQuiz('WCW-PHY-01', 'Student', generatedCode);
+}
+
+// Quiz Access Handler
+function checkDeveloperPassword() {
+    devErrorBox.style.display = 'none';
+    if (devPasswordInput.value === DEV_ACCESS_CODE) {
+        showQuizNotification('Access Granted', 'Welcome! You have successfully logged in as a developer.', 'info');
+        startQuiz('WCW-PHY-01', 'Developer', DEV_ACCESS_CODE);
+    } else {
+        devErrorBox.style.display = 'block';
+    }
+}
+
+function accessQuiz(inputCode) {
+    const errorBox = document.getElementById('quiz-error-box');
+    errorBox.style.display = 'none';
+    
+    const storedStudentCode = localStorage.getItem('studentAccessCode');
+    
+    if (inputCode === QUIZ_ACCESS_CODE || inputCode === DEV_ACCESS_CODE || inputCode === storedStudentCode) {
+        showQuizNotification('Access Granted', 'Welcome! You can now start the quiz.', 'info');
+        startQuiz('WCW-PHY-01', 'Student', inputCode);
+    } else {
+        errorBox.style.display = 'block';
+    }
+}
+
+function startQuiz(quizId, userType, code) {
+    currentQuizId = quizId;
+    quizData = quizData_WCW_PHY_01;
+    
+    // Always start fresh - no progress restoration
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    questionTimeLeft = TIME_PER_MCQ;
+    
+    localStorage.setItem('lastAccessCode', code);
+
+    showPage('quiz-page');
+    initQuiz();
+}
+
+// Quiz Logic
+function initQuiz() {
+    quizSubjectEl.textContent = QUIZ_SUBJECT;
+    perMcqTimeEl.textContent = Math.floor(TIME_PER_MCQ / 60);
+    
+    websiteLinkEl.href = WEBSITE_LINK;
+    whatsappContactLinkEl.href = 'https://wa.me/' + WHATSAPP_CONTACT;
+    whatsappCommunityLinkEl.href = WHATSAPP_COMMUNITY;
+    
+    quizTitleEl.textContent = `Test - ID: ${currentQuizId}`;
+    renderQuestionNav();
+    renderQuestion();
+
+    if (totalTimeInterval) clearInterval(totalTimeInterval);
+    if (questionTimeInterval) clearInterval(questionTimeInterval);
+    
+    totalTimeInterval = setInterval(updateTotalTimer, 1000);
+    questionTimeInterval = setInterval(updateQuestionTimer, 1000);
+}
+
+function updateTotalTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        totalTimerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    } else {
+        clearInterval(totalTimeInterval);
+        submitTest(true);
+    }
+}
+
+function updateQuestionTimer() {
+    if (questionTimeLeft > 0) {
+        questionTimeLeft--;
+        questionTimerEl.textContent = `${questionTimeLeft}`;
+    } else {
+        questionTimeLeft = TIME_PER_MCQ;
+        navigateQuestion('next');
+    }
+}
+
+function renderQuestionNav() {
+    questionNavEl.innerHTML = '';
+    quizData.forEach((_, index) => {
+        const navItem = document.createElement('div');
+        navItem.classList.add('question-nav-item');
+        navItem.textContent = index + 1;
+        navItem.onclick = () => navigateQuestion(index);
+        
+        if (index === currentQuestion) {
+            navItem.classList.add('current');
+        } else if (userAnswers[index] !== null) {
+            navItem.classList.add('solved');
+        } else if (userAnswers.slice(0, index).some(ans => ans !== null) || index < currentQuestion) {
+             navItem.classList.add('visited');
+        }
+        
+        questionNavEl.appendChild(navItem);
+    });
+    updateProgressBar();
+}
+
+function updateProgressBar() {
+    const solvedCount = userAnswers.filter(answer => answer !== null).length;
+    const progress = (solvedCount / quizData.length) * 100;
+    quizProgressEl.style.width = `${progress}%`;
+}
+
+function renderQuestion() {
+    reasoningEl.style.display = 'none';
+    reasoningBtn.classList.add('disabled');
+    const question = quizData[currentQuestion];
+    questionTextEl.textContent = `${currentQuestion + 1}. ${question.question}`;
+    
+    optionsContainerEl.innerHTML = '';
+    question.options.forEach((option, index) => {
+        const optionEl = document.createElement('div');
+        optionEl.classList.add('option');
+        optionEl.textContent = option;
+        
+        const isAnswered = userAnswers[currentQuestion] !== null;
+
+        if (!isAnswered) {
+            optionEl.onclick = () => selectOption(index);
+        } else {
+            if (index === question.correctAnswer) {
+                optionEl.classList.add('correct');
+            } else if (index === userAnswers[currentQuestion]) {
+                optionEl.classList.add('incorrect');
+            }
+        }
+        
+        if (userAnswers[currentQuestion] === index) {
+            optionEl.classList.add('selected');
+        }
+
+        optionsContainerEl.appendChild(optionEl);
+    });
+    
+    questionTimeLeft = TIME_PER_MCQ;
+    questionTimerEl.textContent = `${questionTimeLeft}`;
+    renderQuestionNav();
+    
+    if (userAnswers[currentQuestion] !== null) {
+        reasoningBtn.classList.remove('disabled');
+    }
+}
+
+function selectOption(optionIndex) {
+    const question = quizData[currentQuestion];
+    userAnswers[currentQuestion] = optionIndex;
+    
+    reasoningBtn.classList.remove('disabled');
+    
+    const options = optionsContainerEl.querySelectorAll('.option');
+    options.forEach((option, index) => {
+        option.onclick = null;
+        option.classList.remove('selected', 'correct', 'incorrect');
+        
+        if (index === question.correctAnswer) {
+            option.classList.add('correct');
+        } else if (index === optionIndex) {
+            option.classList.add('incorrect');
+        }
+        
+        if (index === optionIndex) {
+             option.classList.add('selected');
+        }
+    });
+
+    renderQuestionNav();
+    
+    setTimeout(() => {
+        navigateQuestion('next');
+    }, 800);
+}
+
+function navigateQuestion(direction) {
+    const totalQuestions = quizData.length;
+    let nextIndex;
+
+    if (typeof direction === 'number') {
+        nextIndex = direction;
+    } else if (direction === 'next') {
+        nextIndex = (currentQuestion + 1) % totalQuestions;
+    } else if (direction === 'prev') {
+        nextIndex = (currentQuestion - 1 + totalQuestions) % totalQuestions;
+    } else {
+        return;
+    }
+
+    if (nextIndex === currentQuestion) return;
+    
+    currentQuestion = nextIndex;
+    renderQuestion();
+}
+
+function toggleReasoning() {
+    if (reasoningBtn.classList.contains('disabled')) return;
+    
+    const question = quizData[currentQuestion];
+    if (reasoningEl.style.display === 'block') {
+        reasoningEl.style.display = 'none';
+    } else {
+        reasoningTextEl.textContent = question.reasoning;
+        reasoningEl.style.display = 'block';
+    }
+}
+
+function submitTest(isTimeout = false) {
+    if (!isTimeout && !confirm('Are you sure you want to submit the quiz?')) {
+        return;
+    }
+    
+    clearInterval(totalTimeInterval);
+    clearInterval(questionTimeInterval);
+
+    let correct = 0;
+    let incorrect = 0;
+    let unanswered = 0;
+
+    quizData.forEach((question, index) => {
+        if (userAnswers[index] === null) {
+            unanswered++;
+        } else if (userAnswers[index] === question.correctAnswer) {
+            correct++;
+        } else {
+            incorrect++;
+        }
+    });
+
+    const totalQuestions = quizData.length;
+    const totalScore = (correct * MARK_PER_MCQ) - (incorrect * NEGATIVE_MARKING);
+    const totalMarks = totalQuestions * MARK_PER_MCQ;
+
+    correctCountEl.textContent = correct;
+    incorrectCountEl.textContent = incorrect;
+    unansweredCountEl.textContent = unanswered;
+    
+    const performancePercentage = (correct / totalQuestions) * 100;
+    performanceFillEl.style.width = `${performancePercentage}%`;
+
+    const savedStudentData = JSON.parse(localStorage.getItem('studentData') || '{}');
+    const lastAccessCode = localStorage.getItem('lastAccessCode') || 'N/A';
+    
+    let studentInfoHtml = '';
+    for (const [key, value] of Object.entries(savedStudentData)) {
+        studentInfoHtml += `<tr><td>${key}</td><td>${value}</td></tr>`;
+    }
+    studentInfoHtml += `<tr><td>Access Code Used</td><td>${lastAccessCode}</td></tr>`;
+    studentInfoTable.innerHTML = studentInfoHtml;
+
+    quizResultsTable.innerHTML = `
+        <tr><td>Quiz ID</td><td>${currentQuizId}</td></tr>
+        <tr><td>Total Questions</td><td>${totalQuestions}</td></tr>
+        <tr><td>Correct Answers</td><td>${correct}</td></tr>
+        <tr><td>Incorrect Answers</td><td>${incorrect}</td></tr>
+        <tr><td>Unanswered</td><td>${unanswered}</td></tr>
+        <tr><td>Your Score</td><td>${totalScore} / ${totalMarks}</td></tr>
+    `;
+
+    // --- NEW: SEND QUIZ RESULTS TO GOOGLE SHEET ---
+    if (lastAccessCode && lastAccessCode !== 'N/A') {
+        const resultsDataToSend = {
+            type: 'quiz_result',
+            accessCode: lastAccessCode,
+            quizId: currentQuizId,
+            totalQuestions: totalQuestions,
+            correct: correct,
+            incorrect: incorrect,
+            unanswered: unanswered,
+            totalScore: totalScore,
+            totalMarks: totalMarks,
+            studentName: savedStudentData['Student Name'] || 'Unknown' 
+        };
+
+        sendDataToSheet(resultsDataToSend)
+            .then(response => {
+                console.log('Sheet Results Update Response:', response);
+            })
+            .catch(error => {
+                console.error('Sheet Results Update Error:', error);
+                showQuizNotification('Submission Error', 'Failed to send results to the server sheet.', 'error');
+            });
+    }
+    // ----------------------------------------------------
+
+
+    const results = JSON.parse(localStorage.getItem('wcwQuizResults') || '[]');
+    results.push({
+        studentName: savedStudentData['Student Name'] || 'Unknown',
+        accessCode: lastAccessCode,
+        quizId: currentQuizId,
+        totalQuestions: totalQuestions,
+        correct: correct,
+        incorrect: incorrect,
+        unanswered: unanswered,
+        totalScore: totalScore,
+        totalMarks: totalMarks,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwQuizResults', JSON.stringify(results));
+    
+    showQuizNotification('Quiz Completed!', `Your score: ${totalScore}/${totalMarks}. Check the results page for details.`, 'info');
+    
+    showPage('results-page');
+}
+
+function restartTest() {
+    if (confirm('Are you sure you want to retake the full test? Your current progress will be lost.')) {
+        quizData = quizData_WCW_PHY_01;
+        currentQuestion = 0;
+        userAnswers = Array(quizData.length).fill(null);
+        timeLeft = quizData.length * TIME_PER_MCQ;
+        
+        showPage('quiz-page');
+        initQuiz();
+    }
+}
+
+function retakeIncorrect() {
+    const incorrectIndices = quizData.map((question, index) => {
+        const isIncorrect = userAnswers[index] !== null && 
+                            userAnswers[index] !== question.correctAnswer;
+        return isIncorrect ? index : -1;
+    }).filter(index => index !== -1);
+    
+    if (incorrectIndices.length === 0) {
+        showQuizNotification('No Incorrect Questions', 'You have no incorrect questions to retake!', 'info');
+        return;
+    }
+    
+    quizData = incorrectIndices.map(index => quizData_WCW_PHY_01[index]);
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    
+    showPage('quiz-page');
+    initQuiz();
+}
+
+function viewAllMcqs() {
+    allMcqsList.innerHTML = '';
+    quizData_WCW_PHY_01.forEach((question, index) => {
+        const mcqItem = document.createElement('div');
+        mcqItem.classList.add('all-mcq-item');
+        mcqItem.innerHTML = `
+            <div class="question-text">${index + 1}. ${question.question}</div>
+            <div class="all-mcq-options">
+                ${question.options.map((option, optIndex) => `
+                    <div class="all-mcq-option ${optIndex === question.correctAnswer ? 'correct' : ''}">
+                        ${option}
+                    </div>
+                `).join('')}
+            </div>
+            <div class="all-mcq-reasoning">
+                <strong>Reasoning:</strong> ${question.reasoning}
+            </div>
+        `;
+        allMcqsList.appendChild(mcqItem);
+    });
+    showPage('all-mcqs-page');
+}</script>
